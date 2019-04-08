@@ -8,13 +8,7 @@ A Vagrantfile is available on this repository, so, you will be able to have a sa
 vagrant up 
 ```
 
-Execute the Playbook
-----------------
-For local testing: 
-``` 
-  ansible-playbook -i inventory/everchallenge.tst site.yml
-``` 
 
 Author Information
 ------------------
-Felinux   
+Felipe C.Y.   
