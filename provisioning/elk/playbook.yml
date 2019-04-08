@@ -1,0 +1,28 @@
+---
+# Ansible playbook for an ELK (Elasticsearch, Logstash, Kibana) logging server.
+#
+# @author Jeff Geerling (2014).
+
+- hosts: all
+  become: true
+  tasks:
+    - import_tasks: epel/remi_epel.yml
+
+- hosts: logs
+  gather_facts: yes
+
+  vars_files:
+    - vars/main.yml
+
+  #pre_tasks:
+  #  - name: upgrade all packages.
+  #    yum: name=* state=latest
+
+  roles:
+    - geerlingguy.java
+    - geerlingguy.nginx
+    - geerlingguy.elasticsearch
+    - geerlingguy.elasticsearch-curator
+    - geerlingguy.kibana
+    - geerlingguy.logstash
+    - geerlingguy.logstash-forwarder

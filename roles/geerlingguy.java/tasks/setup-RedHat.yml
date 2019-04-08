@@ -1,0 +1,6 @@
+---
+- name: Ensure Java is installed RH.
+  package:
+    name: "{{ java_packages }}"
+    state: present
+
