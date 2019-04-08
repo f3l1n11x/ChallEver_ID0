@@ -18,6 +18,15 @@
     - geerlingguy.logstash-forwarder
 
   tasks:
+
+    - name: Create Folder
+      file: 
+        path: /etc/nginx/sites-enabled/
+        #owner: user 
+        #group: user 
+        #mode: 0755 
+        state: directory
+
     - name: Set up virtual host for testing.
       copy:
         src: files/example.conf

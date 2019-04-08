@@ -1,6 +1,0 @@
-[local]
-localhost       ansible_connection=local
-
-[centserv]
-192.168.33.10   hostname=CentOS01   ansible_ssh_private_key_file=.vagrant/machines/CentOS01/virtualbox/private_key  ansible_user=vagrant
-192.168.33.11   hostname=CentOS02   ansible_ssh_private_key_file=.vagrant/machines/CentOS02/virtualbox/private_key  ansible_user=vagrant

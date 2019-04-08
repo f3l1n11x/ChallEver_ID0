@@ -1,4 +1,10 @@
 ---
+
+- name: Agregar usuario www-data
+  user:
+    name: www-data
+    #expires: -1
+
 # Variable setup.
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
