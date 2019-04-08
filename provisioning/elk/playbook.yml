@@ -2,6 +2,7 @@
 # Ansible playbook for an ELK (Elasticsearch, Logstash, Kibana) logging server.
 #
 # @author Jeff Geerling (2014).
+# Modificado @Fcastilla
 
 - hosts: all
   become: true

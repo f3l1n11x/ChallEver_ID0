@@ -2,6 +2,7 @@
 # Ansible playbook for a web server which forwards its logs to an ELK server.
 #
 # @author Jeff Geerling (2014).
+# Modificado @Fcastilla
 
 - hosts: webs
   gather_facts: yes

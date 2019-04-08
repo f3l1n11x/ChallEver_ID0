@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.linked_clone = true   
   end
 
-  # ELK server.
+  # ELK server.|
   config.vm.define "logs" do |logs|
     #logs.vm.name = "CentOS01"
     logs.vm.hostname = "logs"
