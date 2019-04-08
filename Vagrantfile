@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+
   # Web server.
   config.vm.define "webs" do |webs|
     #webs.vm.name = "CentOS02"

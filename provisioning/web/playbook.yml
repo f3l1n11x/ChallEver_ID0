@@ -18,6 +18,10 @@
     - geerlingguy.logstash-forwarder
 
   tasks:
+ 
+    - name: Agregar usuario Challenge Web
+      user:
+        name: challenge
 
     - name: Create Folder
       file: 

@@ -10,6 +10,10 @@
 
 - hosts: logs
   gather_facts: yes
+  tasks:
+    - name: Agregar usuario Challenge log
+      user:
+        name: challenge
 
   vars_files:
     - vars/main.yml
