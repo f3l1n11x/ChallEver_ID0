@@ -9,9 +9,9 @@
   vars_files:
     - vars/main.yml
 
-  #pre_tasks:
-  #  - name: upgrade all packages.
-  #    yum: name=* state=latest
+  pre_tasks:
+    - name: upgrade all packages.
+      yum: name=* state=latest
 
   roles:
     - geerlingguy.nginx
@@ -30,7 +30,7 @@
         #group: user 
         #mode: 0755 
         state: directory
-        
+
     - name: Set up virtual host for testing.
       copy:
         src: files/example.conf
