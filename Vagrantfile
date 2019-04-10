@@ -8,18 +8,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
 
   config.vm.provider :virtualbox do |v|
-    v.memory = 2048
+    v.memory = 1024
     v.cpus = 2
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
-    #override.vm.hostname = hostname
-    #v.name = "CentOS"
-    v.linked_clone = true   
   end
 
-  # ELK server.|
+  # ELK server.
   config.vm.define "logs" do |logs|
-    #logs.vm.name = "CentOS01"
     logs.vm.hostname = "logs"
     logs.vm.network :private_network, ip: "192.168.9.90"
 
@@ -30,10 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-
   # Web server.
   config.vm.define "webs" do |webs|
-    #webs.vm.name = "CentOS02"
     webs.vm.hostname = "webs"
     webs.vm.network :private_network, ip: "192.168.9.91"
 
