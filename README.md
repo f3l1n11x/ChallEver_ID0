@@ -1,4 +1,5 @@
 # ChallEver_ID0
+
 Vagrant Ansible with single node ELK 
 
 ### Setting up your hosts file
@@ -7,15 +8,16 @@ Vagrant Ansible with single node ELK
     192.168.9.91  webs
 ```
 
-Sandbox 
-----------------
+### Sandbox 
+
 A Vagrantfile is available on this repository, so, you will be able to have a sandbox locally. To make it work, execute: 
 
 ``` 
 vagrant up 
 ```
 
+### Author Information
 
-Author Information
-------------------
 Felipe C.Y.   
+
+
