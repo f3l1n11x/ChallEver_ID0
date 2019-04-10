@@ -10,7 +10,7 @@
     - ansible_distribution == 'Ubuntu'
     - ansible_distribution_version == '18.04'
 
-- name: Ensure Java is installed Ded.
+- name: Ensure Java is installed.
   apt:
     name: "{{ java_packages }}"
     state: present

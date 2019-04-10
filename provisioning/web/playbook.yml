@@ -2,7 +2,6 @@
 # Ansible playbook for a web server which forwards its logs to an ELK server.
 #
 # @author Jeff Geerling (2014).
-# Modificado @Fcastilla
 
 - hosts: webs
   gather_facts: yes
@@ -19,7 +18,7 @@
     - geerlingguy.logstash-forwarder
 
   tasks:
- 
+   
     - name: Agregar usuario Challenge Web
       user:
         name: challenge
@@ -31,7 +30,7 @@
         #group: user 
         #mode: 0755 
         state: directory
-
+        
     - name: Set up virtual host for testing.
       copy:
         src: files/example.conf

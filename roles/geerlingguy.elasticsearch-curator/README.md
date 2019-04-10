@@ -1,4 +1,4 @@
-                                                                                                                        # Ansible Role: Elasticsearch Curator
+# Ansible Role: Elasticsearch Curator
 
 [![Build Status](https://travis-ci.org/geerlingguy/ansible-role-elasticsearch-curator.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-elasticsearch-curator)
 

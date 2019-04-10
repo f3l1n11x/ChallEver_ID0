@@ -1,5 +1,5 @@
 ---
-- name: Ensure Java is installed Free.
+- name: Ensure Java is installed.
   pkgng:
     name: "{{ java_packages }}"
     state: present
