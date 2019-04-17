@@ -1,8 +1,8 @@
 ---
 
-- name: Agregar usuario www-data
-  user:
-    name: www-data
+#- name: Agregar usuario www-data
+#  user:
+#    name: www-data
 
 # Variable setup.
 - name: Include OS-specific variables.

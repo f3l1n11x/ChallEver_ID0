@@ -19,9 +19,9 @@
 
   tasks:
    
-    - name: Agregar usuario Challenge Web
-      user:
-        name: challenge
+#    - name: Agregar usuario Challenge Web
+#      user:
+#        name: challenge
 
     - name: Create Folder
       file: 
