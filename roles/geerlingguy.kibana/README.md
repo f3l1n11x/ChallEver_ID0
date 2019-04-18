@@ -17,11 +17,13 @@ Available variables are listed below, along with default values (see `defaults/m
 
 A workspace where Kibana's download will be stored while configuring Kibana.
 
-    kibana_root: /var/www/kibana3
+    #kibana_root: /var/www/kibana3
+    kibana_root: /var/www/kibana7
 
 The location of Kibana's base install.
 
-    kibana_version: 3.1.2
+    #kibana_version: 3.1.3
+    kibana_version: 7.0.0
 
 The version of kibana to install.
 

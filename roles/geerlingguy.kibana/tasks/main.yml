@@ -7,8 +7,9 @@
 
 - name: Download Kibana.
   get_url:
-    url: "https://download.elasticsearch.org/kibana/kibana/kibana-{{ kibana_version }}.tar.gz"
+    url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-linux-x86_64.tar.gz"
     dest: "{{ workspace }}/kibana-{{ kibana_version }}.tar.gz"
+         #https://artifacts.elastic.co/downloads/kibana/kibana-7.0.0-linux-x86_64.tar.gz
 
 - name: Expand Kibana.
   unarchive:
@@ -24,7 +25,7 @@
 
 - name: Move Kibana into place.
   command: >
-    mv {{ workspace }}/kibana-{{ kibana_version }} {{ kibana_root }}
+    mv {{ workspace }}/kibana-{{ kibana_version }}-linux-x86_64 {{ kibana_root }}
     creates={{ kibana_root }}/config.js
 
 - name: Copy Kibana configuration.

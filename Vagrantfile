@@ -8,17 +8,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "centos/7"
   config.ssh.insert_key = false
-#  config.vm.provision "shell", inline: "sudo adduser challenge --no-create-home & sudo yum install -y epel-release"
 
-#  config.vm.provision "shell", inline: "sudo useradd -p $(openssl passwd -1 password) challenge"
-#  config.vm.provision "shell", inline: "sudo usermod -g wheel challenge"  
-#  config.vm.provision "shell", inline: "sudo yum install -y epel-release"
-#  config.vm.provision "shell", inline: "htop vim"
   config.vm.provision "shell", inline: <<-SHELL
     sudo useradd -p $(openssl passwd -1 password) challenge
     sudo usermod -g wheel challenge
     sudo yum install -y epel-release
+    sudo yum update
     sudo yum install -y htop vim
+
   SHELL
 
   config.vm.provider :virtualbox do |v|
