@@ -10,7 +10,9 @@
 #    - import_tasks: epel/remi_epel.yml
 
 - hosts: logs
-  gather_facts: yes
+  gather_facts: no
+  #gather_facts: yes
+
 #  tasks:
 #    - name: Agregar usuario Challenge log
 #      user:
@@ -19,15 +21,17 @@
   vars_files:
     - vars/main.yml
 
-#  pre_tasks:
-#    - name: upgrade all packages.
-#      yum: name=* state=latest
+  pre_tasks:
+    - name: upgrade all packages.
+      yum: name=* state=latest
 
   roles:
-    - geerlingguy.java
-    - geerlingguy.nginx
-    - geerlingguy.elasticsearch
-    - geerlingguy.elasticsearch-curator
-    - geerlingguy.kibana
-    - geerlingguy.logstash
-    - geerlingguy.logstash-forwarder
+    - instalar.nginx    
+#    - geerlingguy.java
+#    - geerlingguy.nginx
+#    - geerlingguy.elasticsearch
+#    - geerlingguy.elasticsearch-curator
+#    - geerlingguy.kibana
+#    - geerlingguy.logstash
+#    - geerlingguy.logstash-forwarder
+

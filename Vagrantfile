@@ -15,6 +15,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     sudo yum install -y epel-release
     sudo yum update
     sudo yum install -y htop vim
+    sudo yum install -y java-1.8.0-openjdk
+    #sudo yum install -y nginx
+    #systemctl start nginx
+    #systemctl enable nginx
 
   SHELL
 
@@ -36,30 +40,30 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.linked_clone = true
     end    
    
-    logs.vm.provision :ansible do |ansible|
-      ansible.playbook = "provisioning/elk/playbook.yml"
-      ansible.inventory_path = "provisioning/elk/inventory"
-      ansible.become = true
-    end
+    #logs.vm.provision :ansible do |ansible|
+    #  ansible.playbook = "provisioning/elk/playbook.yml"
+    #  ansible.inventory_path = "provisioning/elk/inventory"
+    #  ansible.become = true
+    #end
   end
 
-  # Web server.
-  config.vm.define "webs" do |webs|
-    webs.vm.hostname = "webs" 
-    webs.vm.network :private_network, ip: "192.168.9.91"
+  ## Web server.
+  #config.vm.define "webs" do |webs|
+  #  webs.vm.hostname = "webs" 
+  #  webs.vm.network :private_network, ip: "192.168.9.91"
 
-    config.vm.provider :virtualbox do |v|
-      v.name = "cent7webs"
-      v.linked_clone = true
-    end      
+  #  config.vm.provider :virtualbox do |v|
+  #    v.name = "cent7webs"
+  #    v.linked_clone = true
+  #  end      
 
-    webs.vm.provision :ansible do |ansible|
-      ansible.compatibility_mode = "2.0"
-      ansible.playbook = "provisioning/web/playbook.yml"
-      ansible.inventory_path = "provisioning/web/inventory"
-      ansible.become = true
-    end
-  end
+  #  webs.vm.provision :ansible do |ansible|
+  #    ansible.compatibility_mode = "2.0"
+  #    ansible.playbook = "provisioning/web/playbook.yml"
+  #    ansible.inventory_path = "provisioning/web/inventory"
+  #    ansible.become = true
+  #  end
+  #end
 
 end
 

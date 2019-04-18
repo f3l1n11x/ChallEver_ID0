@@ -1,0 +1,9 @@
+---
+# tasks file for instalar.nginx
+- name: install the latest version of nginx
+  yum:
+    name: nginx
+    state: latest
+    
+- name: Ensure nginx is started and enabled to start at boot.
+  service: name=nginx state=started enabled=yes
