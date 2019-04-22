@@ -1,0 +1,9 @@
+---
+# tasks file for filebeat
+- name: install the latest version of filebeat
+  yum:
+    name: filebeat
+    state: latest
+
+- name: Ensure filebeat is started and enabled to start at boot.
+  service: name=filebeat state=started enabled=yes

@@ -10,10 +10,14 @@
 #    - import_tasks: epel/remi_epel.yml
 
 - hosts: logs
-  gather_facts: no
-  #gather_facts: yes
+  gather_facts: yes
 
 #  tasks:
+#    - name: Set authorized key for user challenge copying it from current user
+#      authorized_key:
+#        user: vagrant
+#        state: present
+#        key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"  
 #    - name: Agregar usuario Challenge log
 #      user:
 #        name: challenge
@@ -21,12 +25,18 @@
   vars_files:
     - vars/main.yml
 
-  pre_tasks:
-    - name: upgrade all packages.
-      yum: name=* state=latest
+#  pre_tasks:
+#    - name: upgrade all packages.
+#      yum: name=* state=latest
 
   roles:
-    - instalar.nginx    
+    - instalar.yum
+    - instalar.nginx
+    - instalar.elasticsearch
+    - instalar.elasticsearch-curator
+    - instalar.kibana
+    - instalar.logstash
+    - instalar.filebeat    
 #    - geerlingguy.java
 #    - geerlingguy.nginx
 #    - geerlingguy.elasticsearch
@@ -35,3 +45,40 @@
 #    - geerlingguy.logstash
 #    - geerlingguy.logstash-forwarder
 
+  #tasks:
+  #   - name: desactivar selinux.
+  #     shell: setenforce 0
+  #     become: true
+
+  #  - name: Unconditionally reboot the machine with all defaults
+  #    reboot:
+  # tasks:
+  #   # Copy remote file (host.example.com:/tmp/somefile) into
+  #   # /tmp/fetched/host.example.com/tmp/somefile on local machine
+  #   - fetch:
+  #       src: /etc/elasticsearch/elasticsearch.yml
+  #       dest: /home/lcastilla/ChallEver_ID0/elasticsearch.yml
+  #   - fetch:
+  #       src: /usr/lib/systemd/system/elasticsearch.service
+  #       dest: /home/lcastilla/ChallEver_ID0/elasticsearch.service
+  #   - fetch:
+  #       src: /etc/sysconfig/elasticsearch
+  #       dest: /home/lcastilla/ChallEver_ID0/elasticsearch   
+  #   - fetch:
+  #       src: /etc/kibana/kibana.yml
+  #       dest: /home/lcastilla/ChallEver_ID0/kibana.yml
+  #   - fetch:
+  #       src: /etc/nginx/nginx.conf
+  #       dest: /home/lcastilla/ChallEver_ID0/nginx.conf
+  #   #- fetch:
+  #   #    src: /etc/nginx/conf.d/kibana.conf
+  #   #    dest: /home/lcastilla/ChallEver_ID0/kibana.conf
+  #   - fetch:
+  #       src: /etc/pki/tls/openssl.cnf
+  #       dest: /home/lcastilla/ChallEver_ID0/openssl.cnf
+  #   #- fetch:
+  #   #    src: /etc/logstash/conf.d/filebeat-input.conf
+  #   #    dest: /home/lcastilla/ChallEver_ID0/filebeat-input.conf  
+  #   - fetch:
+  #       src: /etc/filebeat/filebeat.yml
+  #       dest: /home/lcastilla/ChallEver_ID0/filebeat.yml              

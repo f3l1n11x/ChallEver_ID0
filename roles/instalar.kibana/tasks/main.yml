@@ -1,0 +1,14 @@
+---
+# tasks file for instalar.kibana
+- name: install the latest version of kibana
+  yum:
+    name: kibana
+    state: latest
+
+- name: Ensure kibana is started and enabled to start at boot.
+  service: name=kibana state=started enabled=yes
+
+#- firewalld:
+#    port: 5601/tcp
+#    permanent: yes
+#    state: disabled

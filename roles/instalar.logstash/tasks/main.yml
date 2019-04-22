@@ -1,0 +1,13 @@
+---
+# tasks file for instalar.logstash
+- name: install the latest version of logstash
+  yum:
+    name: logstash
+    state: latest
+
+- name: Generate the logstash.service file for systemd. # yum no lo crea en el scritp.
+  #shell: /usr/share/logstash/bin/system-install /etc/logstash/startup.options systemd 
+  command: /usr/share/logstash/bin/system-install /etc/logstash/startup.options systemd 
+
+- name: Ensure logstash is started and enabled to start at boot.
+  service: name=logstash state=started enabled=yes
