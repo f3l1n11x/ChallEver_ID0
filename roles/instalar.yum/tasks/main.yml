@@ -1,0 +1,44 @@
+---
+# tasks file for instalar.yum
+- name: Add repository epel
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    gpgkey: http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+
+- name: Elasticsearch, Kibana repository for 7.x packages
+  yum_repository:
+    name: elasticsearch
+    description: Elasticsearch YUM repo
+    baseurl: https://artifacts.elastic.co/packages/7.x/yum
+    gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: CentOS/RHEL 7 repository for Elasticsearch Curator 5.x packages
+  yum_repository:
+    name: elasticsearch-curator
+    description: Elasticsearch-curator YUM repo
+    baseurl: https://packages.elastic.co/curator/5/centos/7
+    gpgkey: https://packages.elastic.co/GPG-KEY-elasticsearch
+
+#- name: upgrade all packages.
+#  yum: name=* state=latest
+
+- name: yum
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - vim
+  - htop
+  - net-tools
+  - java-1.8.0-openjdk
+  - iscsi-initiator-utils
+  - httpd-tools
+  - python-passlib
+  #- nginx
+  #- elasticsearch
+  #- elasticsearch-curator
+  #- kibana
+  #- logstash
+  #- filebeat
