@@ -1,6 +1,0 @@
----
-# defaults file for instalar.elasticsearch
-elastic_memory_lock: true
-elastic_host: localhost
-elastic_port: 9200
-elastic_LOCKED_MEMORY: unlimited

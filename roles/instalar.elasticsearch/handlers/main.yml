@@ -1,4 +1,0 @@
----
-# handlers file for instalar.elasticsearch
-- name: restart elasticsearch
-  service: name=elasticsearch state=restarted

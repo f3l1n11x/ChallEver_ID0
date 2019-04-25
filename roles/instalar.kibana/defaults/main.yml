@@ -1,5 +1,0 @@
----
-# defaults file for instalar.kibana
-kibana_port: 5601
-kibana_host: "localhost"
-elasticsearch_url: "http://localhost:9200"
