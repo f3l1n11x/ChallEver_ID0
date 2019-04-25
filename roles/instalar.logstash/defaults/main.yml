@@ -1,4 +1,0 @@
----
-# defaults file for instalar.logstash
-
-subjectAltName_IP: 127.0.0.1
