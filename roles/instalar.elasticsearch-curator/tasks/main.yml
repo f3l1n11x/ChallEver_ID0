@@ -1,0 +1,6 @@
+---
+# tasks file for instalar.elasticsearch-curator
+- name: install the latest version of elasticsearch-curator
+  yum:
+    name: elasticsearch-curator
+    state: latest

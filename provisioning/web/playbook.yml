@@ -1,7 +1,18 @@
 ---
 # Ansible playbook for a web server which forwards its logs to an ELK server.
 #
+<<<<<<< HEAD
 # @author Jeff Geerling (2014).
+=======
+
+#- hosts: machine1 {from here file will be transferred to another remote machine}
+#  tasks:
+#  - name: transfer data from machine1 to machine2
+#    copy:
+#     src=/path/of/machine1
+#     dest=/path/of/machine2
+#    delegate_to: machine2 {file/data receiver machine}
+>>>>>>> ChalleverID1
 
 - hosts: webs
   gather_facts: yes
@@ -9,14 +20,27 @@
   vars_files:
     - vars/main.yml
 
+<<<<<<< HEAD
   pre_tasks:
     - name: upgrade all packages.
       yum: name=* state=latest
+=======
+  tasks:
+    - name: Copiar Certificados generados en logs a webs
+      copy:
+        src: ./logstash-forwarder.crt
+        dest: /etc/pki/tls/certs/logstash-forwarder.crt
+  
+>>>>>>> ChalleverID1
 
   roles:
-    - geerlingguy.nginx
-    - geerlingguy.logstash-forwarder
+    - instalar.yum
+    - instalar.nginx
+    - instalar.filebeat
+  #  - geerlingguy.nginx
+  #  - geerlingguy.logstash-forwarder
 
+<<<<<<< HEAD
   tasks:
    
     - name: Agregar usuario Challenge Web
@@ -26,23 +50,45 @@
     - name: Create Folder
       file: 
         path: /etc/nginx/sites-enabled/
+=======
+# - hosts: logs
+#   gather_facts: yes
+#   tasks:
+#     - name: Transfer file from logs to webs
+#       synchronize:
+#         src: /etc/pki/tls/certs/
+#         dest: /etc/pki/tls/certs/
+#         mode: pull
+#       delegate_to: webs 
+#  tasks:
+#    - name: Unconditionally reboot the machine with all defaults
+#      reboot:
+
+#    - name: Agregar usuario Challenge Web
+#      user:
+#        name: challenge
+
+#    - name: Create Folder
+#      file: 
+#        path: /etc/nginx/sites-enabled/
+>>>>>>> ChalleverID1
         #owner: user 
         #group: user 
         #mode: 0755 
-        state: directory
+#        state: directory
 
-    - name: Set up virtual host for testing.
-      copy:
-        src: files/example.conf
-        dest: /etc/nginx/sites-enabled/example.conf
-        owner: root
-        group: root
-        mode: 0644
-      notify: restart nginx
+#    - name: Set up virtual host for testing.
+#      copy:
+#        src: files/example.conf
+#        dest: /etc/nginx/sites-enabled/example.conf
+#        owner: root
+#        group: root
+#        mode: 0644
+#      notify: restart nginx
 
-    - name: Ensure logs server is in hosts file.
-      lineinfile:
-        dest: /etc/hosts
-        regexp: '.*logs$'
-        line: "192.168.9.90 logs"
-        state: present
+#    - name: Ensure logs server is in hosts file.
+#      lineinfile:
+#        dest: /etc/hosts
+#        regexp: '.*logs$'
+#        line: "192.168.9.90 logs"
+#        state: present
