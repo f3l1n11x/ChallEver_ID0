@@ -9,7 +9,7 @@
     state: latest
 
 # Nginx setup.
-- name: Configure Elasticsearch yml.
+- name: Configure Kibana conf.
   template:
     src: kibana.conf.j2
     dest: /etc/nginx/conf.d/kibana.conf

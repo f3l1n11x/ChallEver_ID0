@@ -1,7 +1,6 @@
 ---
 # Ansible playbook for an ELK (Elasticsearch, Logstash, Kibana) logging server.
 #
-# @author Jeff Geerling (2014).
 # Modificado @Fcastilla
 
 #- hosts: all
@@ -45,7 +44,7 @@
 #    - geerlingguy.logstash
 #    - geerlingguy.logstash-forwarder
 
-  #tasks:
+  tasks:
   #   - name: desactivar selinux.
   #     shell: setenforce 0
   #     become: true
@@ -55,9 +54,10 @@
   # tasks:
   #   # Copy remote file (host.example.com:/tmp/somefile) into
   #   # /tmp/fetched/host.example.com/tmp/somefile on local machine
-  #   - fetch:
-  #       src: /etc/elasticsearch/elasticsearch.yml
-  #       dest: /home/lcastilla/ChallEver_ID0/elasticsearch.yml
+     - fetch:
+         src: /etc/pki/tls/certs/logstash-forwarder.crt
+         dest: ../web/logstash-forwarder.crt
+         flat: yes
   #   - fetch:
   #       src: /usr/lib/systemd/system/elasticsearch.service
   #       dest: /home/lcastilla/ChallEver_ID0/elasticsearch.service

@@ -1,7 +1,14 @@
 ---
 # Ansible playbook for a web server which forwards its logs to an ELK server.
 #
-# @author Jeff Geerling (2014).
+
+#- hosts: machine1 {from here file will be transferred to another remote machine}
+#  tasks:
+#  - name: transfer data from machine1 to machine2
+#    copy:
+#     src=/path/of/machine1
+#     dest=/path/of/machine2
+#    delegate_to: machine2 {file/data receiver machine}
 
 - hosts: webs
   gather_facts: yes
@@ -9,9 +16,12 @@
   vars_files:
     - vars/main.yml
 
-  #pre_tasks:
-  #  - name: upgrade all packages.
-  #    yum: name=* state=latest
+  tasks:
+    - name: Copiar Certificados generados en logs a webs
+      copy:
+        src: ./logstash-forwarder.crt
+        dest: /etc/pki/tls/certs/logstash-forwarder.crt
+  
 
   roles:
     - instalar.yum
@@ -20,7 +30,15 @@
   #  - geerlingguy.nginx
   #  - geerlingguy.logstash-forwarder
 
- 
+# - hosts: logs
+#   gather_facts: yes
+#   tasks:
+#     - name: Transfer file from logs to webs
+#       synchronize:
+#         src: /etc/pki/tls/certs/
+#         dest: /etc/pki/tls/certs/
+#         mode: pull
+#       delegate_to: webs 
 #  tasks:
 #    - name: Unconditionally reboot the machine with all defaults
 #      reboot:
